@@ -72,7 +72,6 @@
 <style lang="scss" scoped>
     #about-page
     {
-        margin-top: var(--navigation-bar-height);
         padding-top: 1em;
     }
 </style>

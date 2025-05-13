@@ -1,32 +1,33 @@
 <script lang="ts" setup>
-    import HiddenFooter from "@/components/globals/HiddenFooter.vue";
-    import NavigationBar from "@/components/globals/NavigationBar.vue";
+    import { ref } from "vue";
+
+    import AppBar from "../components/globals/AppBar.vue";
+    import NavigationDrawer from "../components/globals/NavigationDrawer.vue";
+    import HiddenFooter from "../components/globals/HiddenFooter.vue";
+
+    const open = ref(false);
+    const toggleDrawer = () => { open.value = !(open.value); };
 </script>
 
 <template>
-    <div class="default-layout">
-        <NavigationBar />
-        <div class="content">
+    <VApp>
+        <NavigationDrawer v-model:drawer="open" />
+        <AppBar @drawer:toggle="toggleDrawer" />
+        <VMain>
             <slot></slot>
-        </div>
+        </VMain>
         <HiddenFooter />
-    </div>
+    </VApp>
 </template>
 
-<style lang="scss" scoped>
-    @use "@/assets/scss/variables";
+<style lang="scss">
+    @use "@/assets/scss/index" as *;
 
-    .default-layout
+    #app
     {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-
-        .content
+        .v-main
         {
-            background-color: variables.$slightly-off-white;
-            min-height: 100dvh;
-            flex: 1;
+            background-color: $app-slightly-off-white;
         }
     }
 </style>

@@ -4,14 +4,16 @@
 </script>
 
 <template>
-    <DefaultLayout>
-        <RouterView v-slot="context">
-            <Transition name="page" mode="out-in">
-                <Component :is="context.Component" :key="context.route.path" />
-            </Transition>
-        </RouterView>
-    </DefaultLayout>
-    <AlertHandler />
+    <VApp>
+        <DefaultLayout>
+            <RouterView v-slot="context">
+                <Transition name="page" mode="out-in">
+                    <Component :is="context.Component" :key="context.route.path" />
+                </Transition>
+            </RouterView>
+        </DefaultLayout>
+        <AlertHandler />
+    </VApp>
 </template>
 
 <style lang="scss">

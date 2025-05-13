@@ -40,7 +40,7 @@ jobs:
       - name: Uploading the artifact
         uses: actions/upload-artifact@v4
         with:
-          name: byloth-tuemplate
+          name: byloth-pantry-pal
           path: dist
 
   deploy:
@@ -56,7 +56,7 @@ jobs:
       - name: Download the artifact
         uses: actions/download-artifact@v4
         with:
-          name: byloth-tuemplate
+          name: byloth-pantry-pal
 
       - name: Configuring GitHub Pages
         uses: actions/configure-pages@v4

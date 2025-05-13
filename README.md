@@ -1,4 +1,4 @@
-# Byloth's Tuemplate
+# Pantry Pal
 
 A Vue.js 3 template app based on Vite with TypeScript, Pinia, Vue Router and more.
 
