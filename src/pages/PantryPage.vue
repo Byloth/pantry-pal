@@ -1,24 +1,18 @@
 <script setup lang="ts">
     import { ref } from "vue";
-
-    interface PantryItem {
-        name: string;
-        quantity: number;
-    }
+    import { PantryItem } from "@/models/PantryItem";
 
     const pantryItems = ref<PantryItem[]>([]);
 
     function addItem()
     {
-        pantryItems.value.push({ name: "Nuovo Prodotto", quantity: 1 });
+        pantryItems.value.push(new PantryItem("Nuovo Prodotto"));
     }
 
     function editItem(index: number)
     {
         const item = pantryItems.value[index];
         item.name = prompt("Modifica il nome del prodotto", item.name) || item.name;
-        const quantity = prompt("Modifica la quantità", item.quantity.toString());
-        item.quantity = quantity ? parseInt(quantity, 10) : item.quantity;
     }
 
     function removeItem(index: number)
@@ -39,13 +33,31 @@
                     <VListItem v-for="(item, index) in pantryItems" :key="index">
                         <VListItemContent>
                             <VListItemTitle>{{ item.name }}</VListItemTitle>
-                            <VListItemSubtitle>{{ item.quantity }}</VListItemSubtitle>
+                            <VListItemSubtitle>
+                                Quantità: {{ item.quantity }}
+                                <VBtn icon
+                                      small
+                                      @click="item.increaseQuantity()">
+                                    <VIcon>mdi-plus</VIcon>
+                                </VBtn>
+                                <VBtn icon
+                                      small
+                                      @click="item.decreaseQuantity()">
+                                    <VIcon>mdi-minus</VIcon>
+                                </VBtn>
+                            </VListItemSubtitle>
                         </VListItemContent>
                         <VListItemAction>
-                            <VBtn icon @click="editItem(index)">
+                            <VBtn icon
+                                  small
+                                  color="grey"
+                                  @click="editItem(index)">
                                 <VIcon>mdi-pencil</VIcon>
                             </VBtn>
-                            <VBtn icon @click="removeItem(index)">
+                            <VBtn icon
+                                  small
+                                  color="grey"
+                                  @click="removeItem(index)">
                                 <VIcon>mdi-delete</VIcon>
                             </VBtn>
                         </VListItemAction>
@@ -68,6 +80,12 @@
         h1
         {
             margin-bottom: 20px;
+        }
+
+        .mdi-pencil,
+        .mdi-delete
+        {
+            color: grey;
         }
     }
 </style>

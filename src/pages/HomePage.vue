@@ -1,7 +1,6 @@
 <script lang="ts" setup>
     import { useVuert } from "@byloth/vuert";
 
-    import AppButton from "@/components/ui/AppButton.vue";
     import VueLogo from "@/components/VueLogo.vue";
 
     const $vuert = useVuert();
@@ -60,10 +59,10 @@
             }
         ]
     });
-    const emitDanger = () => $vuert.emit({
+    const emitError = () => $vuert.emit({
         icon: "circle-xmark",
-        title: "Danger",
-        message: "This is a danger message.",
+        title: "Error",
+        message: "This is a error message.",
         type: "error",
         dismissible: true,
         timeout: 5000,
@@ -87,18 +86,18 @@
         </header>
         <h1>Your Pantry Pal is up and running! 🚀</h1>
         <div>
-            <AppButton theme="success" @click="emitSuccess">
+            <VBtn color="success" @click="emitSuccess">
                 Success
-            </AppButton>
-            <AppButton theme="info" @click="emitInfo">
+            </VBtn>
+            <VBtn color="info" @click="emitInfo">
                 Informative
-            </AppButton>
-            <AppButton theme="warning" @click="emitWarning">
+            </VBtn>
+            <VBtn color="warning" @click="emitWarning">
                 Warning
-            </AppButton>
-            <AppButton theme="danger" @click="emitDanger">
-                Danger
-            </AppButton>
+            </VBtn>
+            <VBtn color="error" @click="emitError">
+                Error
+            </VBtn>
         </div>
     </div>
 </template>
@@ -112,7 +111,7 @@
         justify-content: center;
         text-align: center;
 
-        .btn
+        .v-btn
         {
             margin: 0.5em;
         }

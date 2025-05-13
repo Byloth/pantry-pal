@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-    import AlertHandler from "./components/handlers/AlertHandler.vue";
+    import DialogHandler from "./components/handlers/DialogHandler.vue";
     import DefaultLayout from "./layouts/DefaultLayout.vue";
 </script>
 
@@ -12,7 +12,7 @@
                 </Transition>
             </RouterView>
         </DefaultLayout>
-        <AlertHandler />
+        <DialogHandler />
     </VApp>
 </template>
 
